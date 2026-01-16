@@ -1,0 +1,74 @@
+services:
+  # backend-service
+  spring-boot-observability:
+    build:
+      context: . # Use the current directory as the build context
+      dockerfile: Dockerfile # Specify the Dockerfile to use
+    container_name: spring-boot-observability-container
+    restart: always
+    ports:
+      - "8080:8080" # Expose Spring Boot on port 8080
+
+
+  ## Tempo Service
+  tempo:
+    image: grafana/tempo
+    container_name: tempo
+    command: [ "-config.file=/etc/tempo.yaml" ]
+    depends_on:
+      - spring-boot-observability
+    volumes:
+      - ./data/tempo/tempo-config.yml:/etc/tempo.yaml
+    ports:
+      - "3200:3200" # Tempo (Tempo API (for Grafana))
+      - "9411:9411" # zipkin (Zipkin receiver (for Spring Boot))
+
+  ##Prometheus container
+  prometheus:
+    image: prom/prometheus
+  #  network_mode: host # will not work on mac
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./data/prometheus/config:/etc/prometheus/
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yaml"
+    ports:
+      - 9090:9090
+    depends_on:
+      - spring-boot-observability
+
+  #Loki container
+  loki:
+    image: grafana/loki
+    container_name: loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    # We use a default config for quick setup
+    volumes:
+      - ./data/loki:/loki
+
+  #Graphana container
+  grafana:
+    image: grafana/grafana-oss
+    container_name: grafana
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+      - loki
+      - tempo
+    user: root
+    # network_mode: host  <-- REMOVE THIS
+    ports:
+      - 3000:3000
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+     # - ./data/grafana/dashboards/dashboard.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
+     # - ./data/grafana/dashboards:/var/lib/grafana/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+#      - GF_SERVER_DOMAIN=localhost
+      - GF_LOG_MODE=console file
+      - GF_LOG_FILTERS=alerting.notifier.slack:debug alertmanager:debug ngalert:debug

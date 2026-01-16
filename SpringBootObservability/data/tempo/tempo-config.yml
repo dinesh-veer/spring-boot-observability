@@ -1,0 +1,14 @@
+server:
+  http_listen_port: 3200 # Port for Grafana to connect to
+
+
+distributor:
+  receivers:
+    zipkin:   # Enables Zipkin protocol support
+      endpoint: 0.0.0.0:9411  # Port for Spring Boot to push traces
+
+storage:
+  trace:
+    backend: local # Use local disk for storage
+    local:
+      path: /tmp/tempo/blocks # Final trace storage location
