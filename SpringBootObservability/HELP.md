@@ -162,7 +162,7 @@ docker compose up -d
 ```
 It will fetch all containers and start the application.
 
-![img_6.png](docs/images/img_6.png)
+![img_6.png](docs/images/Docker_compose_up.png)
 
 ---
 
@@ -181,7 +181,7 @@ scrape_configs:
       - targets: ["app:8080"]
 ```
 
-![img_1.png](docs/images/img_1.png)
+![img_1.png](docs/images/Prometheus.png)
 
 ---
 
@@ -208,9 +208,9 @@ storage_config:
     directory: /tmp/loki
 ```
 
-![img_3.png](docs/images/img_3.png)
+![img_3.png](docs/images/Loki_logs_2.png)
 
-![img_2.png](docs/images/img_2.png)
+![img_2.png](docs/images/Loki_logs_1.png)
 
 ---
 
@@ -234,9 +234,9 @@ storage:
       path: /tmp/tempo
 ```
 
-![img_4.png](docs/images/img_4.png)
+![img_4.png](docs/images/Tempo_tracing_1.png)
 
-![img_5.png](docs/images/img_5.png)
+![img_5.png](docs/images/Tempo_tracing_2.png)
 
 ---
 
