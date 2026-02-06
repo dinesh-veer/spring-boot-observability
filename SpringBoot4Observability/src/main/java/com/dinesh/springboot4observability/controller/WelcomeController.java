@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.logging.Logger;
-
 @RestController
 @Slf4j
 public class WelcomeController {
@@ -23,6 +21,12 @@ public class WelcomeController {
         log.info("Greeting user: {}", name);
         simulateWork();
         return "Hello, " + name + "!";
+    }
+
+    @GetMapping("/err")
+    public String error() {
+        log.error("Error endpoint triggered");
+        throw new RuntimeException("Intentional error for observability demo");
     }
 
     @GetMapping("/slow")
