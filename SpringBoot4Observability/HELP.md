@@ -221,20 +221,14 @@ INFO [traceId=9f1c4d2a3b7e91f4 spanId=ab12cd34] Slow API called
 ## 📈 Grafana Dashboards
 
 ### JVM & Application Metrics
+![application_metrics.png](docs/images/application_metrics.png)
 
-<!-- PASTE IMAGE HERE -->
-
-```
-![Grafana JVM Dashboard](docs/images/grafana-jvm-dashboard.png)
-```
-
+\
+\
+\
 ### HTTP Latency & Error Rate
 
-<!-- PASTE IMAGE HERE -->
-
-```
-![Grafana HTTP Metrics](docs/images/grafana-http-metrics.png)
-```
+![logback_events.png](docs/images/logback_events.png)
 
 ---
 
@@ -251,11 +245,13 @@ Client
 
 ### Tempo Trace View
 
-<!-- PASTE IMAGE HERE -->
 
-```
-![Tempo Trace](docs/images/tempo-trace.png)
-```
+![tempo_trace.png](docs/images/tempo_trace.png)
+
+
+\
+\
+![tempo_trace_1.png](docs/images/tempo_trace_1.png)
 
 ---
 
@@ -266,14 +262,13 @@ Search logs using traceId:
 ```
 {app="spring-boot-4-observability"} |= "traceId"
 ```
+![Loki_logs with TraceId.png](docs/images/Loki_logs%20with%20TraceId.png)
 
 ### Loki Logs View
+\
+![Loki_logs.png](docs/images/Loki_logs.png)
 
-<!-- PASTE IMAGE HERE -->
-
-```
-![Loki Logs](docs/images/loki-logs.png)
-```
+![img.png](img.png)
 
 ---
 
