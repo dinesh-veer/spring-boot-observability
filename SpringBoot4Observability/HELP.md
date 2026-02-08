@@ -1,6 +1,6 @@
 # Spring Boot 4 Observability
 
-This project demonstrates **end-to-end observability** in a **Spring Boot 4** application using:
+This project demonstrates ![img.png](img.png)**end-to-end observability** in a **Spring Boot 4** application using:
 
 * **Micrometer**
 * **Prometheus** (metrics)
@@ -215,6 +215,13 @@ Example:
 ```
 INFO [traceId=9f1c4d2a3b7e91f4 spanId=ab12cd34] Slow API called
 ```
+
+![TraceId n Span.png](docs/images/TraceId%20n%20Span.png)
+
+\
+\
+![TraceId n Span.png](docs/images/TraceId%20n%20Span.png)
+
 
 ---
 
