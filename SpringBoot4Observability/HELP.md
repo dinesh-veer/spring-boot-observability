@@ -1,6 +1,6 @@
 # Spring Boot 4 Observability
 
-This project demonstrates ![img.png](img.png)**end-to-end observability** in a **Spring Boot 4** application using:
+This project demonstrates **end-to-end observability** in a **Spring Boot 4** application using:
 
 * **Micrometer**
 * **Prometheus** (metrics)
