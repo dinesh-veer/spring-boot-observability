@@ -275,8 +275,6 @@ Search logs using traceId:
 \
 ![Loki_logs.png](docs/images/Loki_logs.png)
 
-![img.png](img.png)
-
 ---
 
 ## 🔗 Observability Correlation Flow
