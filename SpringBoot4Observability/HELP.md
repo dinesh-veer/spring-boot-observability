@@ -313,6 +313,5 @@ Grafana allows seamless navigation between all three.
 
 ## 📜 License
 
-MIT [LICENCE](LICENCE)
-
+MIT [LICENSE](../LICENSE)
 ---

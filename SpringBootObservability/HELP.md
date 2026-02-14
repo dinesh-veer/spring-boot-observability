@@ -302,7 +302,7 @@ datasources:
 # 📜 License
 
 MIT License
-See `LICENSE`
+See [LICENSE](../LICENSE)
 
 ---
 
